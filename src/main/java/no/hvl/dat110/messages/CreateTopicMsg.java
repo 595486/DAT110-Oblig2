@@ -4,11 +4,10 @@ public class CreateTopicMsg extends Message {
 	
 	// message sent from client to create topic on the broker
 	private String topic; 
-	private String user;
 
     public CreateTopicMsg(String user, String topic) {
     	
-    this.user = user;
+    super(MessageType.CREATETOPIC, user);
     this.topic = topic; 
     
     }
@@ -21,20 +20,12 @@ public class CreateTopicMsg extends Message {
 		this.topic = topic;
 	}
 
-	public String getUser() {
-		return user;
-	}
-
-	public void setUser(String user) {
-		this.user = user;
-	}
 	@Override
 	public String toString() {
-		return "CreateTopicMsg [topic =" + topic + ", user =" + user + "]";
+		return "CreateTopicMsg [topic =" + topic + "]";
 	}
     
 
-	// TODO: 
 	// Implement object variables - a topic is required
 	
 	// Complete the constructor, get/set-methods, and toString method

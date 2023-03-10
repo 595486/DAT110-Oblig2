@@ -13,7 +13,21 @@ public class DisplayDevice {
 		
 		System.out.println("Display starting ...");
 		
-		// TODO - START
+		Client client = new Client("display", Common.BROKERHOST, Common.BROKERPORT);
+		client.connect();
+		
+		client.createTopic("temperature");
+		client.subscribe("temperature");
+		
+		for(int i = 1; i<=COUNT; i++) {
+			client.receive();
+		}
+		
+		client.unsubscribe("temperature");
+		client.disconnect();
+		
+		
+		//  - START
 				
 		// create a client object and use it to
 		
@@ -24,7 +38,7 @@ public class DisplayDevice {
 		// - unsubscribe from the topic
 		// - disconnect from the broker
 		
-		// TODO - END
+		//  - END
 		
 		System.out.println("Display stopping ... ");
 		
